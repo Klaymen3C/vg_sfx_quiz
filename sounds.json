@@ -2,22 +2,22 @@
     {
         "id": "1",
         "name": "super mario bros",
-        "sound": "recursos/sound/superMarioBros-coin.m4a"
+        "sound": "recursos/sound/superMarioBros-coin.mp3"
     },
     {
         "id": "2",
         "name": "street fighter",
-        "sound": "recursos/sound/hadouken.m4a"
+        "sound": "recursos/sound/hadouken.mp3"
     },
     {
         "id": "3",
         "name": "crash bandicoot",
-        "sound": "recursos/sound/crashCollectGem.m4a"
+        "sound": "recursos/sound/crashCollectGem.mp3"
     },
     {
         "id": "4",
         "name": "age of empires",
-        "sound": "recursos/sound/wololo.m4a"
+        "sound": "recursos/sound/wololo.mp3"
     },
     {
         "id": "5",
@@ -25,6 +25,6 @@
             "diablo 2",
             "diablo II"
         ],
-        "sound": "recursos/sound/diablo2Portal.m4a"
+        "sound": "recursos/sound/diablo2Portal.mp3"
     }
 ]
