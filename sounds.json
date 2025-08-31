@@ -1,0 +1,30 @@
+[
+    {
+        "id": "1",
+        "name": "super mario bros",
+        "sound": "recursos/sound/superMarioBros-coin.m4a"
+    },
+    {
+        "id": "2",
+        "name": "street fighter",
+        "sound": "recursos/sound/hadouken.m4a"
+    },
+    {
+        "id": "3",
+        "name": "crash bandicoot",
+        "sound": "recursos/sound/crashCollectGem.m4a"
+    },
+    {
+        "id": "4",
+        "name": "age of empires",
+        "sound": "recursos/sound/wololo.m4a"
+    },
+    {
+        "id": "5",
+        "name": [
+            "diablo 2",
+            "diablo II"
+        ],
+        "sound": "recursos/sound/diablo2Portal.m4a"
+    }
+]
