@@ -39,7 +39,7 @@ var sfxBox = document.getElementById("sfxBox");
 function crearSoundPlayer(id, name, sound) {
     var soundDiv = document.createElement('div');
     soundDiv.classList.add('soundplayer');
-    soundDiv.innerHTML = "\n        <audio id= \"audio-".concat(id, "\" src=\"").concat(sound, "\"></audio>\n        <button id=\"btnPlay-").concat(id, "\" class=\"btn-play\">\n            <svg class=\"svg-play\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\"\n                xmlns=\"http://www.w3.org/2000/svg\">\n                <path d=\"M15 12.3301L9 16.6603L9 8L15 12.3301Z\" fill=\"currentColor\" />\n            </svg>\n        </button>\n        <input class=\"input-sound-name\" type=\"text\" placeholder=\"Input answer...\">\n        <p class =\"id-sfx\" id=\"").concat(id, "\">").concat(id, "</p>\n\n    ");
+    soundDiv.innerHTML = "\n        <audio id= \"audio-".concat(id, "\" src=\"").concat(sound, "\"></audio>\n        <button id=\"btnPlay-").concat(id, "\" class=\"btn-play\">\n            <svg class=\"svg-play\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\"\n                xmlns=\"http://www.w3.org/2000/svg\">\n                <path d=\"M15 12.3301L9 16.6603L9 8L15 12.3301Z\" fill=\"currentColor\" />\n            </svg>\n        </button>\n        <input class=\"input-sound-name\" id=\"inputSoundName-").concat(id, "\" type=\"text\" placeholder=\"Input answer...\">\n        <p class =\"id-sfx\" id=\"").concat(id, "\">").concat(id, "</p>\n\n    ");
     sfxBox.appendChild(soundDiv);
     var audio = document.getElementById("audio-".concat(id));
     var btnPlay = document.getElementById("btnPlay-".concat(id));
@@ -51,6 +51,11 @@ function crearSoundPlayer(id, name, sound) {
         });
     }
     playSound();
+    var input = document.getElementById("inputSoundName-".concat(id));
+    input.addEventListener('input', function () {
+        checkAnswer(id, name);
+    });
+    checkAnswer(id, name);
 }
 window.crearSoundPlayer = crearSoundPlayer;
 function chargeSounds() {
@@ -80,6 +85,18 @@ function chargeSounds() {
     });
 }
 document.addEventListener('DOMContentLoaded', chargeSounds);
-// crearSoundPlayer(1, "./recursos/sounds/superMarioBros-coin.m4a");
-// crearSoundPlayer(2, "./recursos/sounds/wololo.m4a");
-// crearSoundPlayer(3, "./recursos/sounds/crashCollectGem.m4a");
+//verificar respuesta
+function checkAnswer(id, name) {
+    var input = document.querySelector("#inputSoundName-".concat(id));
+    if (input) {
+        var userAnswer_1 = input.value.trim().toLowerCase();
+        var validAnswers = Array.isArray(name) ? name : [name];
+        var isCorrect = validAnswers.some(function (ans) { return ans.toLowerCase() === userAnswer_1; });
+        if (isCorrect) {
+            input.style.color = 'green';
+        }
+        else {
+            input.style.color = 'red';
+        }
+    }
+}

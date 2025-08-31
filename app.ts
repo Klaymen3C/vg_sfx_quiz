@@ -16,7 +16,7 @@ function crearSoundPlayer(id: string, name: string | string[], sound: string): v
                 <path d="M15 12.3301L9 16.6603L9 8L15 12.3301Z" fill="currentColor" />
             </svg>
         </button>
-        <input class="input-sound-name" type="text" placeholder="Input answer...">
+        <input class="input-sound-name" id="inputSoundName-${id}" type="text" placeholder="Input answer...">
         <p class ="id-sfx" id="${id}">${id}</p>
 
     `;
@@ -36,6 +36,12 @@ function crearSoundPlayer(id: string, name: string | string[], sound: string): v
 
     playSound();
 
+
+    const input = document.getElementById(`inputSoundName-${id}`) as HTMLInputElement;
+    input.addEventListener('input', () => {
+        checkAnswer(id, name)
+    })
+    checkAnswer(id, name);
 }
 
 declare global {
@@ -62,10 +68,28 @@ async function chargeSounds() {
 
 document.addEventListener('DOMContentLoaded', chargeSounds);
 
+//verificar respuesta
 
-// crearSoundPlayer(1, "./recursos/sounds/superMarioBros-coin.m4a");
-// crearSoundPlayer(2, "./recursos/sounds/wololo.m4a");
-// crearSoundPlayer(3, "./recursos/sounds/crashCollectGem.m4a");
+function checkAnswer(id: string, name: string | string[]) {
+    const input = document.querySelector<HTMLInputElement>(`#inputSoundName-${id}`);
+
+    if (input) {
+        const userAnswer = input.value.trim().toLowerCase();
+
+        const validAnswers = Array.isArray(name) ? name : [name];
+        const isCorrect = validAnswers.some((ans: string) => ans.toLowerCase() === userAnswer);
+
+
+
+        if (isCorrect) {
+            input.style.color = 'green';
+
+        } else {
+            input.style.color = 'red';
+        }
+
+    }
+}
 
 
 
